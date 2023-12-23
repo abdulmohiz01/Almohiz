@@ -26,11 +26,11 @@ const serviceData = [
     title: 'Development',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
-  {
-    icon: <RxReader />,
-    title: 'Copywriting',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
+  // {
+  //   icon: <RxReader />,
+  //   title: 'Copywriting',
+  //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  // },
   {
     icon: <RxRocket />,
     title: 'SEO',

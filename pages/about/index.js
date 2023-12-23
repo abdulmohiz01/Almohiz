@@ -39,37 +39,37 @@ const aboutData = [
       },
       {
         title: 'UI/UX Design',
-        icons: [<FaFigma />, <SiAdobexd />, <SiAdobephotoshop />],
+        icons: [<FaFigma />, <SiAdobephotoshop />],
       },
     ],
   },
-  {
-    title: 'awards',
-    info: [
-      {
-        title: 'Webby Awards - Honoree',
-        stage: '2011 - 2012',
-      },
-      {
-        title: 'Adobe Design Achievement Awards - Finalist',
-        stage: '2009 - 2010',
-      },
-    ],
-  },
+  // {
+  //   title: 'awards',
+  //   info: [
+  //     {
+  //       title: 'Webby Awards - Honoree',
+  //       stage: '2011 - 2012',
+  //     },
+  //     {
+  //       title: 'Adobe Design Achievement Awards - Finalist',
+  //       stage: '2009 - 2010',
+  //     },
+  //   ],
+  // },
   {
     title: 'experience',
     info: [
       {
-        title: 'UX/UI Designer - XYZ Company',
-        stage: '2012 - 2023',
+        title: 'UX/UI Designer - fiverr',
+        stage: '2020 - 2022',
       },
+      // {
+      //   title: 'Web Developer - ABC Agency',
+      //   stage: '2010 - 2012',
+      // },
       {
-        title: 'Web Developer - ABC Agency',
-        stage: '2010 - 2012',
-      },
-      {
-        title: 'Intern - DEF Corporation',
-        stage: '2008 - 2010',
+        title: 'Intern - DevEntia Developers',
+        stage: '2023 - ',
       },
     ],
   },
@@ -77,17 +77,17 @@ const aboutData = [
     title: 'credentials',
     info: [
       {
-        title: 'Web Development - ABC University, LA, CA',
-        stage: '2011',
+        title: 'The Complete Web Development Bootcamp 2023- Udemy',
+        stage: '2023',
       },
       {
-        title: 'Computer Science Diploma - AV Technical Institute',
-        stage: '2009',
+        title: 'Bachelor of Computer Science Degree - COMSATS ISL, Atd',
+        stage: '2026',
       },
-      {
-        title: 'Certified Graphic Designer - ABC Institute, Los Angeles, CA',
-        stage: '2006',
-      },
+      // {
+      //   title: 'Certified Graphic Designer - ABC Institute, Los Angeles, CA',
+      //   stage: '2006',
+      // },
     ],
   },
 ];
@@ -119,12 +119,12 @@ const About = () => {
           initial="hidden"
           animate="show"
           exit="hidden"
-          className='h2'>Captivating <span className='text-accent'>stories</span> birth magnificent designs.</motion.h2>
+          className='h2'>Crafting  <span className='text-amber-500'> Digital Dreams.</span></motion.h2>
         <motion.p variants={fadeIn('right', 0.2)}
           initial="hidden"
           animate="show"
           exit="hidden"
-          className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0'>10 years ago, I began freelancing as a Developer. Since then I've done remote work for agencies, consulted for startups, and collaborated on digital products for business and consumer use.</motion.p>
+          className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0'>Two years ago, I embarked on a freelancing journey as a Developer, and I've been weaving digital magic ever since. I've had the privilege of collaborating with agencies, guiding startups, and contributing to the creation of digital solutions for both businesses and consumers. My passion for technology and storytelling has been the cornerstone of my work, and I'm excited to continue crafting digital dreams.</motion.p>
         {/* counters */}
         <motion.div variants={fadeIn('right', 0.6)}
           initial="hidden"
@@ -135,30 +135,30 @@ const About = () => {
             {/* experience */}
             <div className='relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
               <div className='text-2xl xl:text-4xl font-extrabold text-accent'>
-                <CountUp start={0} end={10} duration={5} />+
+                <CountUp start={0} end={2} duration={5} />+
               </div>
               <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>Years of Experience</div>
             </div>
             {/* clients */}
             <div className='relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
               <div className='text-2xl xl:text-4xl font-extrabold text-accent'>
-                <CountUp start={0} end={250} duration={5} />+
+                <CountUp start={0} end={30} duration={5} />+
               </div>
               <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>Satisfied Clients</div>
             </div>
             {/* finished projects */}
             <div className='relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
               <div className='text-2xl xl:text-4xl font-extrabold text-accent'>
-                <CountUp start={0} end={650} duration={5} />+
+                <CountUp start={0} end={80} duration={5} />+
               </div>
               <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>Finished projects</div>
             </div>
-            <div className='relative flex-1 '>
+            {/* <div className='relative flex-1 '>
               <div className='text-2xl xl:text-4xl font-extrabold text-accent'>
                 <CountUp start={0} end={8} duration={5} />+
               </div>
               <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>Winning awards</div>
-            </div>
+            </div> */}
           </div>
         </motion.div>
       </div>

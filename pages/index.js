@@ -17,10 +17,10 @@ const Home = () => {
       <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
         {/* title */}
         <motion.h1 variants={fadeIn('down', 0.2)} initial='hidden' animate='show' exit='hidden' className="h1">
-          Transforming Ideas <br /> Into{''}  <span className="text-accent">Digital Reality</span>
+          Bringing Imagination <br />  <span className="text-accent">To Life</span>
         </motion.h1>
         {/* subtitle */}
-        <motion.p variants={fadeIn('down', 0.3)} initial='hidden' animate='show' exit='hidden' className="max-w-sm xl:max-w-xl sm:mx-auto md:mx-auto mx:auto xl:mx-0 mb-10 xl:mb-16">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consequuntur eveniet nobis corrupti voluptas, odio quo odit ducimus saepe. Harum facere, atque iste necessitatibus vero explicabo dolor rem corporis repudiandae.</motion.p>
+        <motion.p variants={fadeIn('down', 0.3)} initial='hidden' animate='show' exit='hidden' className="max-w-sm xl:max-w-xl sm:mx-auto md:mx-auto mx:auto xl:mx-0 mb-10 xl:mb-16">Welcome to my digital playground, where ideas become digital wonders. I'm passionate about turning concepts into captivating digital experiences. Let's create something remarkable together.</motion.p>
         <div className="flex justify-center xl:hidden relative z-[10]">
           <ProjectsBtn />
         </div>

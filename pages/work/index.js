@@ -24,7 +24,7 @@ const Work = () => {
             initial="hidden"
             animate='show'
             exit='hidden'
-            className="mb-4 max-w-[400px] mx-auto lg:mx-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui soluta earum debitis id quis, fugit tempore neque delectus dolor tempora </motion.p>
+            className="mb-4 max-w-[400px] mx-auto lg:mx-0">Each project I undertake is a canvas for innovation. From web development to design, I breathe life into ideas and turn them into captivating digital experiences. Explore my portfolio and witness the magic of technology and creativity at its finest.</motion.p>
         </div>
 
         <motion.div variants={fadeIn('down', 0.6)}

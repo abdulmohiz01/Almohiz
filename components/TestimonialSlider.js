@@ -30,8 +30,8 @@ const TestimonialSlider = () => {
               <div className='w-full max-w-[300px] flex flex-col xl:justify-center items-center relative mx-auto xl:mx-0'>
                 <div className='flex flex-col justify-center text-center'>
                   {/* avatar */}
-                  <div className='mb-2 mx-auto '>
-                    <Image src={person.image} width={100} height={100} alt='' />
+                  <div className='mb-2 mx-auto'>
+                    <Image src={person.image} width={100} height={100} alt='' className='rounded-full'/>
                   </div>
                   {/* name */}
                   <div className='text-lg'>
@@ -69,23 +69,23 @@ export default TestimonialSlider;
 const testimonialData = [
   {
     image: '/t-avt-1.png',
-    name: 'Anne Smith',
+    name: 'Elizabeth',
     position: 'Customer',
     message:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!',
+      'Excellent work with attention to detail. Prompt and timely response. Good communication skills. Proactive. Hiring him for another project.',
   },
   {
-    image: '/t-avt-2.png',
-    name: 'Jane Doe',
+    image: '/t-avatar-2.png',
+    name: 'Darcy',
     position: 'Customer',
     message:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!',
+      'Abdul. delivered outstanding results with creativity and precision, turning my vision into a digital masterpiece.',
   },
   {
     image: '/t-avt-3.png',
     name: 'Jhon Doe',
     position: 'Customer',
     message:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum expedita odit beatae, cupiditate saepe quam officia aut placeat quas neque!',
+      'Abdul. brought my vision to life with an exceptional display of creativity and attention to detail. The result? A digital masterpiece that leaves me in awe.',
   },
 ];
