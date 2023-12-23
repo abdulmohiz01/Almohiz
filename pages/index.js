@@ -20,7 +20,7 @@ const Home = () => {
           Bringing Imagination <br />  <span className="text-accent">To Life</span>
         </motion.h1>
         {/* subtitle */}
-        <motion.p variants={fadeIn('down', 0.3)} initial='hidden' animate='show' exit='hidden' className="max-w-sm xl:max-w-xl sm:mx-auto md:mx-auto mx:auto xl:mx-0 mb-10 xl:mb-16">Welcome to my digital playground, where ideas become digital wonders. I'm passionate about turning concepts into captivating digital experiences. Let's create something remarkable together.</motion.p>
+        <motion.p variants={fadeIn('down', 0.3)} initial='hidden' animate='show' exit='hidden' className="max-w-sm xl:max-w-xl sm:mx-auto md:mx-auto mx:auto xl:mx-0 mb-10 xl:mb-16">Welcome to my digital playground, where ideas become digital wonders. I am passionate about turning concepts into captivating digital experiences. Let us create something remarkable together.</motion.p>
         <div className="flex justify-center xl:hidden relative z-[10]">
           <ProjectsBtn />
         </div>

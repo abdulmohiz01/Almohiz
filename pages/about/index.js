@@ -28,20 +28,21 @@ const aboutData = [
       {
         title: 'Web Development',
         icons: [
-          <FaHtml5 />,
-          <FaCss3 />,
-          <FaJs />,
-          <FaReact />,
-          <SiNextdotjs />,
-          <SiFramer />,
-          <FaWordpress />,
+          <FaHtml5 key="html" />,
+          <FaCss3 key="css" />,
+          <FaJs key="js" />,
+          <FaReact key="react" />,
+          <SiNextdotjs key="next" />,
+          <SiFramer key="framer" />,
+          <FaWordpress key="wordpress" />,
         ],
       },
       {
         title: 'UI/UX Design',
-        icons: [<FaFigma />, <SiAdobephotoshop />],
+        icons: [<FaFigma key="figma" />, <SiAdobephotoshop key="photoshop" />],
       },
-    ],
+    ]
+    ,
   },
   // {
   //   title: 'awards',
@@ -124,7 +125,7 @@ const About = () => {
           initial="hidden"
           animate="show"
           exit="hidden"
-          className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0'>Two years ago, I embarked on a freelancing journey as a Developer, and I've been weaving digital magic ever since. I've had the privilege of collaborating with agencies, guiding startups, and contributing to the creation of digital solutions for both businesses and consumers. My passion for technology and storytelling has been the cornerstone of my work, and I'm excited to continue crafting digital dreams.</motion.p>
+          className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0'>Two years ago, I embarked on a freelancing journey as a Developer, and I have been weaving digital magic ever since. I have had the privilege of collaborating with agencies, guiding startups, and contributing to the creation of digital solutions for both businesses and consumers. My passion for technology and storytelling has been the cornerstone of my work, and I am excited to continue crafting digital dreams.</motion.p>
         {/* counters */}
         <motion.div variants={fadeIn('right', 0.6)}
           initial="hidden"
@@ -186,10 +187,11 @@ const About = () => {
               <div>{item.stage}</div>
               <div className='flex gap-x-4'>
                 {/* icons */}
-                {item.icons?.map((icon, itemIndex) => {
-                  return <div className='text-2xl text-white'>{icon}</div>
-                })}
+                {item.icons?.map((icon, iconIndex) => (
+                  <div key={iconIndex} className='text-2xl text-white'>{icon}</div>
+                ))}
               </div>
+
 
             </div>)
           })}
