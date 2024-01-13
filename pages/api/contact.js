@@ -1,5 +1,6 @@
 // Import the mailOptions object at the beginning of the file
 import { transporter, mailOptions } from "../config/nodemailer";
+import { sendMail } from "../config/nodemailer";
 
 // ...
 
