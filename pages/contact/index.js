@@ -8,11 +8,11 @@ import { motion } from 'framer-motion';
 //formik
 import { useFormik } from 'formik';
 //validation
-import { signUpSchema } from '../schema';
+
 
 //variants
 import { fadeIn } from '../../variants'
-import { sendContactForm } from '../lib/api';
+import { signUpSchema } from '../schema/validationSchema';
 const initialValues = {
   name: "",
   subject: "",
@@ -24,11 +24,28 @@ const Contact = () => {
     initialValues: initialValues,
     validationSchema: signUpSchema,
     onSubmit: async (values, action) => {
-      await sendContactForm(values);
-      action.resetForm();
-    }    
-  })
-  console.log(errors);
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        });
+
+        if (response.ok) {
+          console.log('Email sent successfully');
+          action.resetForm();
+          // Add any additional logic or feedback for a successful submission
+        } else {
+          console.error('Failed to send email');
+          // Add logic or feedback for a failed submission
+        }
+      } catch (error) {
+        console.error('Error sending email:', error);
+      }
+    },
+  });
 
   return (
     <div className='h-full bg-primary/30'>

@@ -1,32 +1,37 @@
-// Import the mailOptions object at the beginning of the file
-import { transporter, mailOptions } from "../config/nodemailer";
-import { sendMail } from "../config/nodemailer";
+import nodemailer from 'nodemailer';
 
-// ...
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    const { name, email, subject, message } = req.body;
 
-const handler = async (req, res) => {
-  if (req.method === "POST") {
-    const data = req.body;
-    if (!data.name || !data.email || !data.subject || !data.message) {
-      return res.status(400).json({ message: "Bad Request" });
-    }
-    try {
-      // Update this part to use the mailOptions object
-      await transporter.sendMail({
-        ...mailOptions,  // Use the mailOptions object
-        subject: data.subject,
-        text: `Name: ${data.name}\nEmail: ${data.email}\nMessage: ${data.message}`,
-      });
+    // Configure Nodemailer with your email credentials
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'fatizforever@gmail.com', // replace with your Gmail address
+        pass: process.env.EMAIL_PASS, // replace with your Gmail password or an App Password
+      },
+    });
 
-      // Assuming success if the sendMail function didn't throw an error
-      return res.status(200).json({ message: "Message sent successfully" });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ message: "Internal Server Error" });
-    }
+    // Create the email message
+    const mailOptions = {
+      from: 'forever@gmail.com', // replace with your Gmail address
+      to: 'skylark7768@gmail.com', // replace with your target email address
+      subject: `${subject}`,
+      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+    };
+
+    // Send the email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.status(200).send('Email sent successfully');
+      }
+    });
+  } else {
+    res.status(405).send('Method Not Allowed');
   }
-
-  return res.status(400).json({ message: "Bad Request" });
-};
-
-export default handler;
+}
