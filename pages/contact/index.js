@@ -8,11 +8,10 @@ import { motion } from 'framer-motion';
 //formik
 import { useFormik } from 'formik';
 //validation
-
+import {signUpSchema} from "../../schema/index"
 
 //variants
 import { fadeIn } from '../../variants'
-import signUpSchema from '../../schema/validationSchema';
 const initialValues = {
   name: "",
   subject: "",
