@@ -12,7 +12,7 @@ import { useFormik } from 'formik';
 
 //variants
 import { fadeIn } from '../../variants'
-import { signUpSchema } from '../schema/validationSchema';
+import signUpSchema from '../../schema/validationSchema';
 const initialValues = {
   name: "",
   subject: "",
