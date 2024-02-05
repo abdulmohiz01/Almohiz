@@ -68,10 +68,10 @@ const aboutData = [
       //   title: 'Web Developer - ABC Agency',
       //   stage: '2010 - 2012',
       // },
-      {
-        title: 'Intern - DevEntia Developers',
-        stage: '2023 - ',
-      },
+      // {
+      //   title: 'Intern - DevEntia Developers',
+      //   stage: '2023 - ',
+      // },
     ],
   },
   {
