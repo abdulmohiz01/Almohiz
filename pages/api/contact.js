@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
     // Create the email message
     const mailOptions = {
-      from: 'forever@gmail.com', // replace with your Gmail address
+      from: 'fatizforever@gmail.com', // replace with your Gmail address
       to: 'skylark7768@gmail.com', // replace with your target email address
       subject: `${subject}`,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,

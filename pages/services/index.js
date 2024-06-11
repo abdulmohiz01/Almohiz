@@ -24,7 +24,7 @@ const Services = () => {
             initial="hidden"
             animate='show'
             exit='hidden'
-            className="mb-4 maxw-[400px] mx-auto lg:mx-0">Experience the limitless possibilities of cutting-edge solutions. I specialize in creating tailored digital experiences that elevate your business. My commitment to excellence ensures you get the best in the industry, every time.</motion.p>
+            className="mb-4 max-w-[400px] mx-auto lg:mx-0">Experience the limitless possibilities of cutting-edge solutions. I specialize in creating tailored digital experiences that elevate your business. My commitment to excellence ensures you get the best in the industry, every time.</motion.p>
         </div>
 
         <motion.div variants={fadeIn('down', 0.6)}

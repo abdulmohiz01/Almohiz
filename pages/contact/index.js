@@ -18,10 +18,10 @@ const initialValues = {
   email: "",
   message: "",
 };
-const Contact = () => {
+const Contact = () => { 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
-    validationSchema: signUpSchema,
+    validationSchema: signUpSchema, 
     onSubmit: async (values, action) => {
       try {
         const response = await fetch('/api/contact', {
