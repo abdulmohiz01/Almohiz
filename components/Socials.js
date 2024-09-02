@@ -8,7 +8,7 @@ const Socials = () => {
   <Link href={'https://www.linkedin.com/in/abdul-mohiz/'} target="_blank" className="hover:text-accent transition-all duration-300" >
     <RiLinkedinBoxLine/>
   </Link>
-    <Link href={'https://www.upwork.com/freelancers/~01939710390bbdfe41'} target='_blank' className="hover:text-accent transition-all duration-300">
+    <Link href={'/'} target='_blank' className="hover:text-accent transition-all duration-300">
       <BiLogoUpwork />
     </Link>
     <Link href={'https://www.instagram.com/_abdulmohiz_'} target="_blank" className="hover:text-accent transition-all duration-300">
