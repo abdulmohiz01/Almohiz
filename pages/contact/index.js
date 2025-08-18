@@ -23,15 +23,15 @@ const Contact = () => {
     initialValues: initialValues,
     validationSchema: signUpSchema, 
     onSubmit: async (values, action) => {
-      const webhookUrl = 'https://wespark.tech/webhook/a90afbba-7cf6-44ab-882a-12af057ba6ac';
+      const webhookUrl = 'https://wespark.tech/webhook/portfolio-form-submission';
       try {
         // Attempt both the internal API POST and the external webhook POST.
         const results = await Promise.allSettled([
-          fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(values),
-          }),
+          // fetch('/api/contact', {
+          //   method: 'POST',
+          //   headers: { 'Content-Type': 'application/json' },
+          //   body: JSON.stringify(values),
+          // }),
           fetch(webhookUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
