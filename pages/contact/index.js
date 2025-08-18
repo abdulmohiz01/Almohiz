@@ -23,25 +23,51 @@ const Contact = () => {
     initialValues: initialValues,
     validationSchema: signUpSchema, 
     onSubmit: async (values, action) => {
+      const webhookUrl = 'https://wespark.tech/webhook/a90afbba-7cf6-44ab-882a-12af057ba6ac';
       try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(values),
-        });
+        // Attempt both the internal API POST and the external webhook POST.
+        const results = await Promise.allSettled([
+          fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(values),
+          }),
+          fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(values),
+          }),
+        ]);
 
-        if (response.ok) {
-          console.log('Email sent successfully');
-          action.resetForm();
-          // Add any additional logic or feedback for a successful submission
+        // results[0] => /api/contact, results[1] => webhook
+        const apiResult = results[0];
+        const webhookResult = results[1];
+
+        if (apiResult.status === 'fulfilled') {
+          const resp = apiResult.value;
+          if (resp.ok) {
+            console.log('Email sent successfully');
+            action.resetForm();
+          } else {
+            console.error('Failed to send email (status:', resp.status, ')');
+          }
         } else {
-          console.error('Failed to send email');
-          // Add logic or feedback for a failed submission
+          console.error('Error sending email:', apiResult.reason);
+        }
+
+        if (webhookResult.status === 'fulfilled') {
+          const resp = webhookResult.value;
+          if (resp.ok) {
+            console.log('Webhook posted successfully');
+          } else {
+            console.error('Webhook post failed (status:', resp.status, ')');
+          }
+        } else {
+          console.error('Error posting webhook:', webhookResult.reason);
         }
       } catch (error) {
-        console.error('Error sending email:', error);
+        // This catch is a last-resort; individual fetch errors handled above via allSettled
+        console.error('Unexpected error during form submission:', error);
       }
     },
   });
