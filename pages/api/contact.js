@@ -21,6 +21,28 @@ export default async function handler(req, res) {
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
     };
 
+    // Send to webhook
+    try {
+      console.log('Attempting to send webhook with data:', { name, email, subject, message });
+      const webhookResponse = await fetch('https://wespark.tech/webhook/portfolio-form-submission', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+
+      console.log('Webhook response status:', webhookResponse.status);
+      const responseText = await webhookResponse.text();
+      console.log('Webhook response body:', responseText);
+
+      if (webhookResponse.ok) {
+        console.log('Webhook posted successfully');
+      } else {
+        console.error('Webhook failed with status:', webhookResponse.status);
+      }
+    } catch (webhookError) {
+      console.error('Webhook error:', webhookError);
+    }
+
     // Send the email
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
