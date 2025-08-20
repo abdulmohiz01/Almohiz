@@ -1,7 +1,32 @@
 import nodemailer from 'nodemailer';
 
+// Simple in-memory rate limiting (use Redis in production)
+const submissions = new Map();
+const RATE_LIMIT_WINDOW = 60000; // 1 minute
+const MAX_SUBMISSIONS = 2; // Max 2 submissions per minute per IP
+
 export default async function handler(req, res) {
   if (req.method === 'POST') {
+    // Rate limiting
+    const clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'unknown';
+    const now = Date.now();
+    
+    if (submissions.has(clientIP)) {
+      const userSubmissions = submissions.get(clientIP);
+      // Remove old submissions outside the window
+      const recentSubmissions = userSubmissions.filter(time => now - time < RATE_LIMIT_WINDOW);
+      
+      if (recentSubmissions.length >= MAX_SUBMISSIONS) {
+        console.log(`Rate limit exceeded for IP: ${clientIP}`);
+        return res.status(429).json({ error: 'Too many submissions. Please wait before submitting again.' });
+      }
+      
+      recentSubmissions.push(now);
+      submissions.set(clientIP, recentSubmissions);
+    } else {
+      submissions.set(clientIP, [now]);
+    }
+
     const { name, email, subject, message } = req.body;
 
     // Configure Nodemailer with your email credentials
@@ -24,7 +49,7 @@ export default async function handler(req, res) {
     // Send to webhook
     try {
       console.log('Attempting to send webhook with data:', { name, email, subject, message });
-      const webhookResponse = await fetch('https://wespark.tech/webhook/portfolio-form-submission', {
+      const webhookResponse = await fetch('https://wespark.tech/webhook-test/portfolio-form-submission', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, subject, message }),

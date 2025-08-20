@@ -1,5 +1,6 @@
 //components
 import Circles from '../../components/Circles'
+import { useState } from 'react'
 
 //icons
 import { BsArrowRight } from 'react-icons/bs'
@@ -19,10 +20,15 @@ const initialValues = {
   message: "",
 };
 const Contact = () => { 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: initialValues,
     validationSchema: signUpSchema, 
     onSubmit: async (values, action) => {
+      if (isSubmitting) return; // Prevent multiple submissions
+      
+      setIsSubmitting(true);
       try {
         const response = await fetch('/api/contact', {
           method: 'POST',
@@ -38,6 +44,8 @@ const Contact = () => {
         }
       } catch (error) {
         console.error('Error submitting form:', error);
+      } finally {
+        setIsSubmitting(false);
       }
     },
   });
@@ -72,8 +80,14 @@ const Contact = () => {
             <textarea name='message' value={values.message} onChange={handleChange} onBlur={handleBlur} placeholder='message' className='textarea'></textarea>
             {errors.message && touched.message ? (<p className='text-red-500 flex'>{errors.message}</p>) : null}
             </div>
-            <button type='submit' className='btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group'>
-              <span className='group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'>Let us talk</span>
+            <button 
+              type='submit' 
+              disabled={isSubmitting}
+              className={`btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              <span className='group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'>
+                {isSubmitting ? 'Sending...' : 'Let us talk'}
+              </span>
               <BsArrowRight className=' -translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]' />
             </button>
           </motion.form>
